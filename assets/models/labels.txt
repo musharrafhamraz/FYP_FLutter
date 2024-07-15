@@ -1,0 +1,29 @@
+Cherry Powdery Mildew
+Black Rot
+Corn (Maize) Healthy
+Grape Leaf Blight
+Tomato Early Blight
+Grape Esca (Black Measles)
+Bell Pepper Healthy
+Strawberry Healthy
+Peach Healthy
+Cherry Healthy
+Corn (Maize) Cercospora Leaf Spot
+Apple Scab
+Potato Early Blight
+Potato Healthy
+Apple Healthy
+Tomato Yellow Leaf Curl Virus
+Tomato Late Blight
+Strawberry Leaf Scorch
+Cedar Apple Rust
+Corn (Maize) Common Rust
+Tomato Healthy
+Potato Late Blight
+Corn (Maize) Northern Leaf Blight
+Bell Pepper Bacterial Spot
+Grape Healthy
+Tomato Bacterial Spot
+Peach Bacterial Spot
+Tomato Septoria Leaf Spot
+Grape Black Rot

@@ -1,0 +1,78 @@
+[
+    {
+      "disease_name": "Tomato Late blight",
+      "symptoms": "Brownish-green spots appear on the leaf margins and leaf tops. Later, large areas of the leaves turn brown completely. During wet weather, lesions on the lower side of the leaves may be covered with a gray to white moldy growth, making it easier to distinguish healthy from dead leaf tissue. As the disease progresses, the foliage runs brown, curls and dries. In some cases, the sharply delimited brown spots and the white covering also appear on the stems, branches, and petioles. Greyish-green to dirty-brown and wrinkled stains appear on the fruits. At these spots, the fruit flesh is hardened.",
+      "treatment": "Purchase healthy seeds from reliable retailers.\n Plant more resilient varieties.\n Tomatoes and potatoes should not be cultivated next to each other.\nTry to keep plants dry through good drainage and ventilation of your cultures.\n Install a simple transparent rain shelter with the help of a tarpaulin and woodes stakes.\n Use plant fortifier for general strengthening of the plants.\n Crop rotation of two to three years with non-host crops is recommended.\nSilicate-containing fertilizers may increase the resistance to the fungus, especially in the seedling stage.\n Avoid irrigation late in the day and irrigate plants at ground level.\n Disinfect field equipment and tools."
+    },
+    {
+        "disease_name": "Tomato Early Blight",
+        "symptoms": "If a plant has early blight, it will show symptoms on its older leaves, stem, and fruits. There will be gray or brown spots on the leaves that get bigger in circles around a clear center, which looks like a target (the characteristic “bullseye” formation). The spots are also surrounded by a bright yellow ring. As the disease gets worse, the entire leaf may turn yellow and fall off, leaving the plant with fewer leaves. When the leaves fall off, the fruits are more likely to get sunburn. The same type of spots with a clear center also appear on the stem and fruits. The fruits may start to rot and fall off the plant.",
+        "treatment": "Use seeds or plants that are certified to be free of the disease.\n Look for varieties that are resistant to the disease.\n Plant or transplant the plants on raised beds to improve drainage.\n Plant the rows in the direction of the wind and avoid shady areas.\n Leave enough space between plants so that the tops of the plants dry quickly after rain or irrigation.\n Cover the soil with mulch to keep the plants from touching the soil.\n Watch for signs of the disease, especially during wet weather.\n Remove the bottom leaves that are too close to the soil.\n Remove any leaves that show symptoms of the disease and destroy them.\n Keep the plants healthy and strong with good fertilization.\n Use stakes to keep the plants upright depending on the crop.\n Use a drip irrigation system to minimize the amount of time the leaves are wet.\n Water the plants in the morning so they have time to dry during the day.\n Control weeds that are susceptible to the disease around the field.\n Avoid working in the field when the plants are wet.\n After harvest, remove all plant debris and burn it (do not compost it) or bury it deep in the soil (more than 45 cm).\n Plant different crops in the field over two or three years. \nFor potatoes, store the tubers in a cool place with good air circulation."
+    },
+    {
+        "disease_name": "Tomato Bacterial Spot",
+        "symptoms": "Symptoms can be seen on the foliage, stems, and fruits of tomatoes. Initially small yellow-green lesions appear on young leaves for bacterial spot, whilst bacterial speck causes black spots with a narrow yellow halo. They are usually more numerous on leaf margins or tips, which may appear deformed and twisted. In severe cases, the spots of bacterial speck may coalesce or overlap, resulting in larger and irregular lesions. Bacterial spot lesions can enlarge from 0.25 cm to 0.5 cm and become tan to brownish-red, which will eventually look like shot holes when the center dries up. Bacterial spot produces similar lesion of fruits as it does on the leaves and eventually roughen, becoming brown and scabbed. Bacterial speck causes tiny, slightly raised black specks. It is difficult to distinguish between these two diseases at an early stage",
+        "treatment": "Plant disease-free seeds if possible from a certified source.\n Use resistant varieties if available locally.\n Inspect field regularly, particularly during overcast weather.\n Avoid injuring transplants during handling or planting.\n Ensure sufficient space between plants and use stakes to keep them upright.\n Remove and burn any seedling or plant part with leaf spots.\n Remove weeds in and around the field.\n Mulch the soil to avoid soil-to-plant contamination. \nClean tools and equipment. \nAvoid overhead irrigation and working in fields when foliage is wet.\n Plough deep plant debris after harvest. \nAlternatively, remove plant debris and leave the soil idle for some weeks or a month (solarization).\n Plan a 2-3 year crop rotation with a non-susceptible crop."
+    },
+    {
+        "disease_name": "Tomato Septoria Leaf Spot",
+        "symptoms": "Symptoms spread upwards from oldest to youngest growth. Small, water-soaked grey circular spots with dark-brown margins appear on the undersides of older leaves. At later stages of the disease, the spots enlarge and coalesce, and black dots appear in their centers. The same pattern may also be observed on stems and blossoms, but rarely on fruit. Heavily infected leaves will turn slightly yellow, wither, and fall off. The defoliation leads to sun scalding of fruit.",
+        "treatment": "Acquire certified disease-free seeds.\n If available, use resistant varieties.\n Apply organic or plastic mulch to avoid transmission from soil.\n Remove infected leaves and destroy them.\n Improve air circulation and keep plants off the ground with stakes.\n Make sure that production areas are free of susceptible weeds.\n Do not use sprinklers or other overhead irrigation. \nKeep your equipment and tools clean after field work.\n Dig plant debris deep in the soil after harvest.\n Alternatively, remove and destroy them.\n Plan a crop rotation for several years with non-susceptible plants."
+      },
+    {
+      "disease_name": "Tomato Yellow Leaf Curl Virus",
+      "symptoms": "Infection at seedling stage results in severe stunting of young leaves and shoots, leading to a somewhat bushy growth of the plant. In older plants, the infection results in excessive branching, thicker and wrinkled leaves, and interveinal chlorosis clearly visible on the leaf blade. At later stages of the disease, the plants take a leathery texture and their chlorotic margins are rolled upwards and inwards. If the infection takes place before the flowering stage, the number of fruits is considerably reduced, even though there are no noticeable symptoms on their surface.",
+      "treatment": "Use resistant or tolerant varieties.\n Plant early to avoid peak populations of the whitefly.\n Intercrop with rows of non-susceptible plants such as squash and cucumber.\n Use nets to cover seedbeds and prevent whiteflies from reaching plants.\n Practice crop rotation with non-susceptible plants.\n Avoid planting alternative host plants close to crops.\n Mulch the seedbed or the field to break the life cycle of the whitefly.\n Use sticky yellow plastic traps to mass-catch the insect.\n Monitor the field, handpick diseased plants and bury them away from the field.\n Find and eradicate weeds in and around the field.\n Plow deep all plant debris after harvest or burn them."
+    },
+    {
+      "disease_name": "Tomato Healthy",
+      "symptoms": "The leaf is fresh and green.",
+      "treatment": "No need of treatment, Keep it up."
+    },
+    {
+      "disease_name": "Potato Early Blight",
+      "symptoms": "If a plant has early blight, it will show symptoms on its older leaves, stem, and fruits. There will be gray or brown spots on the leaves that get bigger in circles around a clear center, which looks like a target (the characteristic “bullseye” formation). The spots are also surrounded by a bright yellow ring. As the disease gets worse, the entire leaf may turn yellow and fall off, leaving the plant with fewer leaves. When the leaves fall off, the fruits are more likely to get sunburn. The same type of spots with a clear center also appear on the stem and fruits. The fruits may start to rot and fall off the plant.",
+      "treatment": "Use seeds or plants that are certified to be free of the disease.\n Look for varieties that are resistant to the disease.\n Plant or transplant the plants on raised beds to improve drainage.\n Plant the rows in the direction of the wind and avoid shady areas.\n Leave enough space between plants so that the tops of the plants dry quickly after rain or irrigation.\n Cover the soil with mulch to keep the plants from touching the soil.\n Watch for signs of the disease, especially during wet weather. \nRemove the bottom leaves that are too close to the soil.\n Remove any leaves that show symptoms of the disease and destroy them. \nKeep the plants healthy and strong with good fertilization.\n Use stakes to keep the plants upright depending on the crop.\n Use a drip irrigation system to minimize the amount of time the leaves are wet.\n Water the plants in the morning so they have time to dry during the day.\n Control weeds that are susceptible to the disease around the field.\n Avoid working in the field when the plants are wet.\n After harvest, remove all plant debris and burn it (do not compost it) or bury it deep in the soil (more than 45 cm).\n Plant different crops in the field over two or three years.\n For potatoes, store the tubers in a cool place with good air circulation."
+    },
+    
+    {
+      "disease_name": "Potato Healthy",
+      "symptoms": "The leaf is fresh and green.",
+      "treatment": "No need of treatment, Keep it up."
+    },
+    {
+      "disease_name": "Potato Late Blight",
+      "symptoms": "Dark brown spots develop on the leaves starting at the tip or the leaf margins. In humid climates, these spots become water-soaked lesions. A white fungal covering can be seen on the underside of the leaves. As the disease progresses, entire leaves become necrotic, turn brown and die off. Similar lesions develop on stems and petioles. The potato tubers have greyish-blue spots on their skin and their flesh also turns brown, making them inedible. The rotting of the infested fields emits a distinctive odor.",
+      "treatment": "Use healthy seeds or more tolerant plants. \nMake sure the field has good air ventilation and well-drained soil.\n Monitor fields and remove infected plants and surrounding ones.\n Use rotations of two to three years to non-host crops.\n Destroy volunteer hosts in and around the field.\n Avoid excessive fertilization with nitrogen.\n Use plant fortifiers.\n Store tubers at low temperatures and with good ventilation.\n Destroy tubers and plant debris after harvest burying them two feet deep or feeding them to animals."
+    },
+    {
+      "disease_name": "Corn (Maize) Cercospora Leaf Spot",
+      "symptoms": "Small, oval lesions with grey centers and dark margins appear on leaves and stem. On these lesions black and raised dots develop.",
+      "treatment": "Plant more resilient varieties.\n Control weeds.\n Implement crop rotation.\n Maintain good field hygiene - remove or burn any plant residues."
+    },
+    {
+      "disease_name": "Corn (Maize) Common Rust",
+      "symptoms": "Minute flecks appear on both sides of the leaves and slowly develop into small, tan, slightly raised spots. These mainly elongated spots later turn into powdery, golden-brown pustules loosely scattered in patches on upper and lower sides. The color can change to black as the plant matures. Contrarily to other rust diseases, symptoms are not usually present on other plant parts, such as stalks, sheath leaves or husks. However, stalks tend to grow weak and soft and are prone to lodging. Younger leaf tissue is more susceptible to fungal infection than mature leaves. Plants infected during the early stages can show chlorosis of leaves and death, leading to high yield losses if upper leaves are affected.",
+      "treatment": "Plant resistant varieties available locally.\n Plant early to avoid optimal conditions for infection.\n Use shorter season varieties that mature earlier.\n Monitor your crop regularly for signs of the disease, even more so during overcast weather.\n Ensure balanced fertilization with split applications of nitrogen.\n Plan a crop rotation with non-susceptible crops."
+    },
+    {
+      "disease_name": "Corn (Maize) Northern Leaf Blight",
+      "symptoms": "The symptoms appear as small, oval, water-soaked spots on the lower leaves first. As the disease progresses, they start to appear on the upper part of the plant. Older spots slowly grow into tan, long cigar-shaped necrotic lesions with distinct dark specks and pale green, water-soaked borders. These lesions later coalesce and engulf a large part of the leaf blade and stalk, sometimes leading to death and lodging. If the infection spreads to the upper parts of the plant during the development of the cob. Severe yield losses can occur (up to 70%).",
+      "treatment": "Grow resistant or tolerant varieties.\n Ensure balanced nutrient supply and avoid excessive nitrogen fertilization.\n Weed regularly in and around the field.\n Rotate with soybeans, beans, or sunflower to avoid extensive spreading. \nPlow deep to bury plant debris and reduce the amount inoculum in the soil."
+    },
+    {
+      "disease_name": "Corn (Maize) Healthy",
+      "symptoms": "The leaf is fresh and green.",
+      "treatment": "No need of treatment, Keep it up."
+    },
+    {
+      "disease_name": "Grape Black Rot",
+      "symptoms": "Irregular spots appear on the leaves, which are framed by a dark line. Shoots, stems and leaf stalks can also show symptoms of these spots. If leaf stalks are affected the whole leaves will dry. Grapes will show grey discolorations in the first beginning, which then turn to reddish-brown or violet spots. The fruit will become deformed and eventually be shriveled and black mummified.",
+      "treatment": "Choose a more resistant variety if available.\n Remove fruit mummies from the vine.\n Infested wood and twines should be removed and destroyed after harvest.\n Consequently remove infested leaves from the vineyard.\n Keep your vineyard clear of weeds. \nProvide proper air circulation and lighting.\n Prune your vines every year before the vegetative stage."
+    },
+    {
+      "disease_name": "Grape Healthy",
+      "symptoms": "The leaf is fresh and green.",
+      "treatment": "No need of treatment, Keep it up."
+    }
+  ]
