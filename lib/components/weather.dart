@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:geolocator/geolocator.dart';
+import 'package:geocoding/geocoding.dart';
 
 class WeatherScreen extends StatefulWidget {
   @override
@@ -10,11 +12,47 @@ class WeatherScreen extends StatefulWidget {
 class _WeatherScreenState extends State<WeatherScreen> {
   late Future<WeatherData> weatherData;
 
+  // New code....
+
+  Future<String> _getAddressFromLatLng() async {
+    try {
+      // Get the current position of the device
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+
+      // Use the coordinates to get the address
+      List<Placemark> placemarks =
+          await placemarkFromCoordinates(position.latitude, position.longitude);
+
+      print(position.longitude + position.latitude);
+
+      // Get the first result from the placemarks list
+      Placemark place = placemarks[0];
+
+      // Construct the address
+      String address = '${place.locality}, ${place.country}';
+
+      return address;
+    } catch (e) {
+      print(e);
+      return 'Unable to determine the location';
+    }
+  }
+
+  String _address = 'Fetching location...';
+
   @override
   void initState() {
     super.initState();
-    weatherData = WeatherService()
-        .fetchWeatherData(35.92, 74.30); // Replace with desired coordinates
+    weatherData = WeatherService().fetchWeatherData(35.92, 74.30);
+    _fetchLocation(); // Replace with desired coordinates
+  }
+
+  Future<void> _fetchLocation() async {
+    String address = await _getAddressFromLatLng();
+    setState(() {
+      _address = address;
+    });
   }
 
   @override
@@ -34,16 +72,16 @@ class _WeatherScreenState extends State<WeatherScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.location_on,
                         color: Colors.black54,
                       ),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       Text(
-                        'Vynnyky, Lviv Oblast, Ukraine',
-                        style: TextStyle(
+                        _address,
+                        style: const TextStyle(
                           fontSize: 16,
                           color: Colors.black54,
                         ),
@@ -55,7 +93,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '${weather.temperature.toStringAsFixed(1)}°',
+                        '+${weather.temperature.toStringAsFixed(0)}°',
                         style: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
