@@ -53,14 +53,14 @@ class _CameraScreenState extends State<CameraScreen> {
           ? recognitions!.first['label']
           : 'No Prediction';
     });
-    Navigator.push(
+    Navigator.pushNamed(
       context,
       MaterialPageRoute(
         builder: (context) => ResultScreen(
           prediction: _prediction ?? 'No Prediction',
           imagePath: path,
         ),
-      ),
+      ) as String,
     );
   }
 

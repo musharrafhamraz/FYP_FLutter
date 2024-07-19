@@ -16,29 +16,31 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
-        child: Column(
-          children: [
-            WeatherScreen(),
-            const SizedBox(
-              height: 30.0,
-            ),
-            const CommonDisease(),
-            const SizedBox(
-              height: 20.0,
-            ),
-            const AgricultureFacts(),
-            const Spacer(),
-            NaviagtionButton(
-              buttonText: "START TREATMENT",
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, '/camera');
-              },
-            ),
-          ],
+        child: SingleChildScrollView(
+          // Wrap content with SingleChildScrollView
+          padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
+          child: Column(
+            children: [
+              const WeatherScreen(),
+              const SizedBox(
+                height: 30.0,
+              ),
+              const CommonDisease(),
+              const SizedBox(
+                height: 20.0,
+              ),
+              const AgricultureFacts(),
+              // const Spacer(),
+              NaviagtionButton(
+                buttonText: "START TREATMENT",
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/camera');
+                },
+              ),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }
