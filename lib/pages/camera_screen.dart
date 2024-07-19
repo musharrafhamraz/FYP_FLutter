@@ -24,7 +24,7 @@ class _CameraScreenState extends State<CameraScreen> {
   Future<void> _initializeCamera() async {
     cameras = await availableCameras();
     if (cameras != null && cameras!.isNotEmpty) {
-      _controller = CameraController(cameras![1], ResolutionPreset.high);
+      _controller = CameraController(cameras![0], ResolutionPreset.high);
       await _controller?.initialize();
       setState(() {
         _isCameraInitialized = true;
@@ -85,54 +85,77 @@ class _CameraScreenState extends State<CameraScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                  'assets/images/background_camera.jpg'), // Replace with your image path
-              fit: BoxFit.cover, // Adjust the fit as needed
-            ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (_isCameraInitialized && _controller != null)
-                Center(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(40.0),
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.73,
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      child: AspectRatio(
-                        aspectRatio: _controller!.value.aspectRatio,
-                        child: CameraPreview(_controller!),
+        child: Stack(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                      'assets/images/background_camera.jpg'), // Replace with your image path
+                  fit: BoxFit.cover, // Adjust the fit as needed
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (_isCameraInitialized && _controller != null)
+                    Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(40.0),
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.73,
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          child: AspectRatio(
+                            aspectRatio: _controller!.value.aspectRatio,
+                            child: CameraPreview(_controller!),
+                          ),
+                        ),
+                      ),
+                    )
+                  else
+                    const Center(child: CircularProgressIndicator()),
+                  const SizedBox(
+                    height: 40.0,
+                  ),
+                  InkWell(
+                    onTap: _captureAndClassify,
+                    child: Container(
+                      height: 80.0,
+                      width: 80.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40.0),
+                        color: Colors.white,
+                      ),
+                      child: const Icon(
+                        Icons.camera,
+                        color: Colors.black,
+                        size: 55.0,
                       ),
                     ),
                   ),
-                )
-              else
-                const Center(child: CircularProgressIndicator()),
-              const SizedBox(
-                height: 40.0,
+                ],
               ),
-              InkWell(
-                onTap: _captureAndClassify,
-                child: Container(
-                  height: 80.0,
-                  width: 80.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40.0),
-                    color: Colors.white,
+            ),
+            Positioned(
+                top: 13,
+                left: 13,
+                child: InkWell(
+                  onTap: () => Navigator.pushNamed(context, '/home'),
+                  child: Container(
+                    height: 65.0,
+                    width: 65.0,
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Icon(
+                      Icons.arrow_back_ios_new,
+                      color: Colors.white,
+                      size: 34,
+                    ),
                   ),
-                  child: const Icon(
-                    Icons.camera,
-                    color: Colors.black,
-                    size: 55.0,
-                  ),
-                ),
-              ),
-            ],
-          ),
+                )),
+          ],
         ),
       ),
     );
