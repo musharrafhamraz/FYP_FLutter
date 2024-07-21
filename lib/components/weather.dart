@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -34,50 +35,50 @@ class _WeatherScreenState extends State<WeatherScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.location_on,
                         color: Colors.black54,
                       ),
-                      SizedBox(width: 8),
-                      Text(
-                        "Gilgit, Pakistan",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black54,
-                        ),
-                      ),
+                      const SizedBox(width: 8),
+                      Text("Gilgit, Pakistan",
+                          style: GoogleFonts.openSans(
+                            textStyle: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.black54,
+                            ),
+                          )),
                     ],
                   ),
                   const SizedBox(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        '+${weather.temperature.toStringAsFixed(0)}°',
-                        style: const TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      Text('+${weather.temperature.toStringAsFixed(0)}°',
+                          style: GoogleFonts.openSans(
+                            textStyle: const TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'H: ${weather.highestTemp.toStringAsFixed(1)}°',
-                            style: const TextStyle(
-                              fontSize: 14,
-                              color: Colors.black54,
-                            ),
-                          ),
-                          Text(
-                            'L: ${weather.lowestTemp.toStringAsFixed(1)}°',
-                            style: const TextStyle(
-                              fontSize: 14,
-                              color: Colors.black54,
-                            ),
-                          ),
+                          Text('H: ${weather.highestTemp.toStringAsFixed(1)}°',
+                              style: GoogleFonts.openSans(
+                                textStyle: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black54,
+                                ),
+                              )),
+                          Text('L: ${weather.lowestTemp.toStringAsFixed(1)}°',
+                              style: GoogleFonts.openSans(
+                                textStyle: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black54,
+                                ),
+                              )),
                         ],
                       ),
                       const SizedBox(
@@ -97,78 +98,78 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     children: [
                       Column(
                         children: [
-                          const Text(
-                            'Humidity',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black54,
-                            ),
-                          ),
+                          Text('Humidity',
+                              style: GoogleFonts.openSans(
+                                textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black54,
+                                ),
+                              )),
                           const SizedBox(height: 4),
-                          Text(
-                            '${weather.humidity}%',
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          Text('${weather.humidity}%',
+                              style: GoogleFonts.openSans(
+                                textStyle: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )),
                         ],
                       ),
                       Column(
                         children: [
-                          const Text(
-                            'Precipitation',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black54,
-                            ),
-                          ),
+                          Text('Precipitation',
+                              style: GoogleFonts.openSans(
+                                textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black54,
+                                ),
+                              )),
                           const SizedBox(height: 4),
-                          Text(
-                            '${weather.precipitation} mm',
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          Text('${weather.precipitation} mm',
+                              style: GoogleFonts.openSans(
+                                textStyle: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )),
                         ],
                       ),
                       Column(
                         children: [
-                          const Text(
-                            'Pressure',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black54,
-                            ),
-                          ),
+                          Text('Pressure',
+                              style: GoogleFonts.openSans(
+                                textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black54,
+                                ),
+                              )),
                           const SizedBox(height: 4),
-                          Text(
-                            '${weather.pressure} hPa',
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          Text('${weather.pressure} hPa',
+                              style: GoogleFonts.openSans(
+                                textStyle: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )),
                         ],
                       ),
                       Column(
                         children: [
-                          const Text(
-                            'Wind',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black54,
-                            ),
-                          ),
+                          Text('Wind',
+                              style: GoogleFonts.openSans(
+                                textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black54,
+                                ),
+                              )),
                           const SizedBox(height: 4),
-                          Text(
-                            '${weather.windSpeed} m/s',
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          Text('${weather.windSpeed} m/s',
+                              style: GoogleFonts.openSans(
+                                textStyle: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )),
                         ],
                       ),
                     ],

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../pages/common_disease_details.dart';
 
-const DATA = [
+const data = [
   {
     "id": "5",
     "title": "Powdery Mildew",
@@ -62,9 +63,9 @@ class CommonDisease extends StatelessWidget {
       height: 235.0,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: DATA.length,
+        itemCount: data.length,
         itemBuilder: (context, index) {
-          final disease = DATA[index];
+          final disease = data[index];
           return GestureDetector(
             onTap: () {
               Navigator.pushNamed(
@@ -73,7 +74,7 @@ class CommonDisease extends StatelessWidget {
                 arguments: disease,
               );
             },
-            child: Container(
+            child: SizedBox(
               // padding: const EdgeInsets.all(12.0),
               width: 250.0,
               height: 200.0,
@@ -111,17 +112,17 @@ class CommonDisease extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                disease['title']!,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              Text(disease['title']!,
+                                  style: GoogleFonts.openSans(
+                                    textStyle: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  )),
                             ],
                           ),
                           const Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: CircleAvatar(

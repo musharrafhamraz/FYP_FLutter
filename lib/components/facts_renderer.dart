@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AgricultureFacts extends StatefulWidget {
   const AgricultureFacts({Key? key}) : super(key: key);
@@ -75,8 +76,10 @@ class _AgricultureFactsState extends State<AgricultureFacts> {
               child: Text(
                 key: ValueKey<int>(currentFactIndex),
                 facts[currentFactIndex],
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: GoogleFonts.nunito(
+                  textStyle: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
+                ),
                 textAlign: TextAlign.center,
               ),
             ),

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart'; // Import for date and time formatting
 
 class ResultScreen extends StatefulWidget {
@@ -44,11 +45,8 @@ class _ResultScreenState extends State<ResultScreen> {
   @override
   Widget build(BuildContext context) {
     if (diseasesData == null) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('Prediction Result'),
-        ),
-        body: const Center(child: CircularProgressIndicator()),
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
       );
     }
 
@@ -87,17 +85,18 @@ class _ResultScreenState extends State<ResultScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'No information found for ${widget.prediction}',
-                      style:
-                          const TextStyle(fontSize: 24.0, color: Colors.white),
-                    ),
+                    Text('No information found for ${widget.prediction}',
+                        style: GoogleFonts.openSans(
+                          textStyle: const TextStyle(
+                              fontSize: 24.0, color: Colors.white),
+                        )),
                     const SizedBox(height: 8.0),
                     Text(
-                      DateFormat('yyyy-MM-dd – kk:mm').format(DateTime.now()),
-                      style:
-                          const TextStyle(fontSize: 16.0, color: Colors.white),
-                    ),
+                        DateFormat('yyyy-MM-dd – kk:mm').format(DateTime.now()),
+                        style: GoogleFonts.openSans(
+                          textStyle: const TextStyle(
+                              fontSize: 16.0, color: Colors.white),
+                        )),
                   ],
                 ),
               ),
@@ -144,17 +143,19 @@ class _ResultScreenState extends State<ResultScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        widget.prediction,
-                        style: const TextStyle(
-                            fontSize: 24.0, color: Colors.white),
-                      ),
+                      Text(widget.prediction,
+                          style: GoogleFonts.openSans(
+                            textStyle: const TextStyle(
+                                fontSize: 24.0, color: Colors.white),
+                          )),
                       const SizedBox(height: 8.0),
                       Text(
-                        DateFormat('yyyy-MM-dd – kk:mm').format(DateTime.now()),
-                        style: const TextStyle(
-                            fontSize: 16.0, color: Colors.white),
-                      ),
+                          DateFormat('yyyy-MM-dd – kk:mm')
+                              .format(DateTime.now()),
+                          style: GoogleFonts.openSans(
+                            textStyle: const TextStyle(
+                                fontSize: 16.0, color: Colors.white),
+                          )),
                     ],
                   ),
                 ),
@@ -167,27 +168,27 @@ class _ResultScreenState extends State<ResultScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Symptoms:',
-                    style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                  ),
+                  Text('Symptoms:',
+                      style: GoogleFonts.openSans(
+                        textStyle: const TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold),
+                      )),
                   const SizedBox(height: 8.0),
-                  Text(
-                    symptoms,
-                    style: const TextStyle(fontSize: 16.0),
-                  ),
+                  Text(symptoms,
+                      style: GoogleFonts.openSans(
+                        textStyle: const TextStyle(fontSize: 16.0),
+                      )),
                   const SizedBox(height: 20.0),
-                  const Text(
-                    'Treatment:',
-                    style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                  ),
+                  Text('Treatment:',
+                      style: GoogleFonts.openSans(
+                        textStyle: const TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold),
+                      )),
                   const SizedBox(height: 8.0),
-                  Text(
-                    treatment,
-                    style: const TextStyle(fontSize: 16.0),
-                  ),
+                  Text(treatment,
+                      style: GoogleFonts.openSans(
+                        textStyle: const TextStyle(fontSize: 16.0),
+                      )),
                 ],
               ),
             ),
