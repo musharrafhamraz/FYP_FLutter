@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:tflite_v2/tflite_v2.dart';
 import 'treatment_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CameraScreen extends StatefulWidget {
+  const CameraScreen({super.key});
   @override
   _CameraScreenState createState() => _CameraScreenState();
 }
@@ -87,54 +89,57 @@ class _CameraScreenState extends State<CameraScreen> {
       body: SafeArea(
         child: Stack(
           children: [
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                      'assets/images/background_camera.jpg'), // Replace with your image path
-                  fit: BoxFit.cover, // Adjust the fit as needed
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: Text('Crop Doctor',
+                      style: GoogleFonts.openSans(
+                        textStyle: const TextStyle(
+                            fontSize: 27,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.lightGreen),
+                      )),
                 ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (_isCameraInitialized && _controller != null)
-                    Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(40.0),
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.73,
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          child: AspectRatio(
-                            aspectRatio: _controller!.value.aspectRatio,
-                            child: CameraPreview(_controller!),
-                          ),
+                const SizedBox(
+                  height: 20,
+                ),
+                if (_isCameraInitialized && _controller != null)
+                  Center(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(40.0),
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.73,
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        child: AspectRatio(
+                          aspectRatio: _controller!.value.aspectRatio,
+                          child: CameraPreview(_controller!),
                         ),
                       ),
-                    )
-                  else
-                    const Center(child: CircularProgressIndicator()),
-                  const SizedBox(
-                    height: 40.0,
-                  ),
-                  InkWell(
-                    onTap: _captureAndClassify,
-                    child: Container(
-                      height: 80.0,
-                      width: 80.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40.0),
-                        color: Colors.white,
-                      ),
-                      child: const Icon(
-                        Icons.camera,
-                        color: Colors.black,
-                        size: 55.0,
-                      ),
+                    ),
+                  )
+                else
+                  const Center(child: CircularProgressIndicator()),
+                const SizedBox(
+                  height: 20,
+                ),
+                InkWell(
+                  onTap: _captureAndClassify,
+                  child: Container(
+                    height: 80.0,
+                    width: 80.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      color: Colors.black,
+                    ),
+                    child: const Icon(
+                      Icons.camera,
+                      color: Colors.white,
+                      size: 55.0,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             Positioned(
                 top: 13,
