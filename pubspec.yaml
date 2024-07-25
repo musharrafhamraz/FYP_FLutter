@@ -34,7 +34,7 @@ dependencies:
   tflite_v2: ^1.0.0
   http: ^0.13.3
   json_annotation: ^4.4.0
-  google_fonts: 
+  google_fonts: 4.0.4
   redacted: ^1.0.12
   
 
