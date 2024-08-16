@@ -1,8 +1,30 @@
+import 'package:dtreatyflutter/auth/login_screen.dart';
+import 'package:dtreatyflutter/pages/home_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../components/naviagtion_button.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  void _checkUser() {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
+      );
+    } else {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +87,7 @@ class SplashScreen extends StatelessWidget {
                   NaviagtionButton(
                     buttonText: "TRY FOR FREE",
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/home');
+                      _checkUser();
                     },
                   ),
                 ],

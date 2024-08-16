@@ -1,340 +1,467 @@
+// import 'package:flutter/material.dart';
+// import 'package:google_fonts/google_fonts.dart';
+// import 'dart:convert';
+// import 'package:http/http.dart' as http;
+// import 'package:redacted/redacted.dart';
+
+// class WeatherScreen extends StatefulWidget {
+//   const WeatherScreen({super.key});
+//   @override
+//   _WeatherScreenState createState() => _WeatherScreenState();
+// }
+
+// class _WeatherScreenState extends State<WeatherScreen> {
+//   late Future<WeatherData> weatherData;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     weatherData = WeatherService().fetchWeatherData(35.92, 74.30);
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: FutureBuilder<WeatherData>(
+//         future: weatherData,
+//         builder: (context, snapshot) {
+//           if (snapshot.connectionState == ConnectionState.waiting) {
+//             // Use the redacted package to show a loading state
+//             return _buildLoadingState().redacted(
+//               context: context,
+//               redact: true,
+//               configuration: RedactedConfiguration(
+//                 animationDuration: const Duration(milliseconds: 800),
+//               ),
+//             );
+//           } else if (snapshot.hasError) {
+//             return Text('Error: ${snapshot.error}');
+//           } else if (snapshot.hasData) {
+//             final weather = snapshot.data!;
+//             return Padding(
+//               padding: const EdgeInsets.all(16.0),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Row(
+//                     children: [
+//                       const Icon(
+//                         Icons.location_on,
+//                         color: Colors.black54,
+//                       ),
+//                       const SizedBox(width: 8),
+//                       Text("Gilgit, Pakistan",
+//                           style: GoogleFonts.openSans(
+//                             textStyle: const TextStyle(
+//                               fontSize: 16,
+//                               color: Colors.black54,
+//                             ),
+//                           )),
+//                     ],
+//                   ),
+//                   const SizedBox(height: 16),
+//                   Row(
+//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                     children: [
+//                       Text('+${weather.temperature.toStringAsFixed(0)}°',
+//                           style: GoogleFonts.openSans(
+//                             textStyle: const TextStyle(
+//                               fontSize: 30,
+//                               fontWeight: FontWeight.bold,
+//                             ),
+//                           )),
+//                       Column(
+//                         crossAxisAlignment: CrossAxisAlignment.start,
+//                         children: [
+//                           Text('H: ${weather.highestTemp.toStringAsFixed(1)}°',
+//                               style: GoogleFonts.openSans(
+//                                 textStyle: const TextStyle(
+//                                   fontSize: 14,
+//                                   color: Colors.black54,
+//                                 ),
+//                               )),
+//                           Text('L: ${weather.lowestTemp.toStringAsFixed(1)}°',
+//                               style: GoogleFonts.openSans(
+//                                 textStyle: const TextStyle(
+//                                   fontSize: 14,
+//                                   color: Colors.black54,
+//                                 ),
+//                               )),
+//                         ],
+//                       ),
+//                       const SizedBox(
+//                         width: 30.0,
+//                       ),
+//                       Image.network(
+//                         'https://cdn-icons-png.flaticon.com/512/1163/1163661.png',
+//                         width: 80,
+//                         height: 80,
+//                         fit: BoxFit.cover,
+//                       ),
+//                     ],
+//                   ),
+//                   const SizedBox(height: 30),
+//                   Row(
+//                     mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                     children: [
+//                       Column(
+//                         children: [
+//                           Text('Humidity',
+//                               style: GoogleFonts.openSans(
+//                                 textStyle: const TextStyle(
+//                                   fontSize: 16,
+//                                   color: Colors.black54,
+//                                 ),
+//                               )),
+//                           const SizedBox(height: 4),
+//                           Text('${weather.humidity}%',
+//                               style: GoogleFonts.openSans(
+//                                 textStyle: const TextStyle(
+//                                   fontSize: 14,
+//                                   fontWeight: FontWeight.bold,
+//                                 ),
+//                               )),
+//                         ],
+//                       ),
+//                       Column(
+//                         children: [
+//                           Text('Precipitation',
+//                               style: GoogleFonts.openSans(
+//                                 textStyle: const TextStyle(
+//                                   fontSize: 16,
+//                                   color: Colors.black54,
+//                                 ),
+//                               )),
+//                           const SizedBox(height: 4),
+//                           Text('${weather.precipitation} mm',
+//                               style: GoogleFonts.openSans(
+//                                 textStyle: const TextStyle(
+//                                   fontSize: 14,
+//                                   fontWeight: FontWeight.bold,
+//                                 ),
+//                               )),
+//                         ],
+//                       ),
+//                       Column(
+//                         children: [
+//                           Text('Pressure',
+//                               style: GoogleFonts.openSans(
+//                                 textStyle: const TextStyle(
+//                                   fontSize: 16,
+//                                   color: Colors.black54,
+//                                 ),
+//                               )),
+//                           const SizedBox(height: 4),
+//                           Text('${weather.pressure} hPa',
+//                               style: GoogleFonts.openSans(
+//                                 textStyle: const TextStyle(
+//                                   fontSize: 14,
+//                                   fontWeight: FontWeight.bold,
+//                                 ),
+//                               )),
+//                         ],
+//                       ),
+//                       Column(
+//                         children: [
+//                           Text('Wind',
+//                               style: GoogleFonts.openSans(
+//                                 textStyle: const TextStyle(
+//                                   fontSize: 16,
+//                                   color: Colors.black54,
+//                                 ),
+//                               )),
+//                           const SizedBox(height: 4),
+//                           Text('${weather.windSpeed} m/s',
+//                               style: GoogleFonts.openSans(
+//                                 textStyle: const TextStyle(
+//                                   fontSize: 14,
+//                                   fontWeight: FontWeight.bold,
+//                                 ),
+//                               )),
+//                         ],
+//                       ),
+//                     ],
+//                   ),
+//                 ],
+//               ),
+//             );
+//           } else {
+//             return const Text('No data');
+//           }
+//         },
+//       ),
+//     );
+//   }
+
+//   Widget _buildLoadingState() {
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         Row(
+//           children: [
+//             const Icon(
+//               Icons.location_on,
+//               color: Colors.black54,
+//             ),
+//             const SizedBox(width: 8),
+//             Text("Loading location...",
+//                 style: GoogleFonts.openSans(
+//                   textStyle: const TextStyle(
+//                     fontSize: 16,
+//                     color: Colors.black54,
+//                   ),
+//                 )),
+//           ],
+//         ),
+//         const SizedBox(height: 16),
+//         Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//           children: [
+//             Text('...',
+//                 style: GoogleFonts.openSans(
+//                   textStyle: const TextStyle(
+//                     fontSize: 30,
+//                     fontWeight: FontWeight.bold,
+//                   ),
+//                 )),
+//             Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 Text('H: ...',
+//                     style: GoogleFonts.openSans(
+//                       textStyle: const TextStyle(
+//                         fontSize: 14,
+//                         color: Colors.black54,
+//                       ),
+//                     )),
+//                 Text('L: ...',
+//                     style: GoogleFonts.openSans(
+//                       textStyle: const TextStyle(
+//                         fontSize: 14,
+//                         color: Colors.black54,
+//                       ),
+//                     )),
+//               ],
+//             ),
+//             const SizedBox(
+//               width: 30.0,
+//             ),
+//             Container(
+//               width: 80,
+//               height: 80,
+//               color: Colors.grey.shade300,
+//             ),
+//           ],
+//         ),
+//         const SizedBox(height: 30),
+//         Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceAround,
+//           children: [
+//             Column(
+//               children: [
+//                 Text('Humidity',
+//                     style: GoogleFonts.openSans(
+//                       textStyle: const TextStyle(
+//                         fontSize: 16,
+//                         color: Colors.black54,
+//                       ),
+//                     )),
+//                 const SizedBox(height: 4),
+//                 Text('...',
+//                     style: GoogleFonts.openSans(
+//                       textStyle: const TextStyle(
+//                         fontSize: 14,
+//                         fontWeight: FontWeight.bold,
+//                       ),
+//                     )),
+//               ],
+//             ),
+//             Column(
+//               children: [
+//                 Text('Precipitation',
+//                     style: GoogleFonts.openSans(
+//                       textStyle: const TextStyle(
+//                         fontSize: 16,
+//                         color: Colors.black54,
+//                       ),
+//                     )),
+//                 const SizedBox(height: 4),
+//                 Text('...',
+//                     style: GoogleFonts.openSans(
+//                       textStyle: const TextStyle(
+//                         fontSize: 14,
+//                         fontWeight: FontWeight.bold,
+//                       ),
+//                     )),
+//               ],
+//             ),
+//             Column(
+//               children: [
+//                 Text('Pressure',
+//                     style: GoogleFonts.openSans(
+//                       textStyle: const TextStyle(
+//                         fontSize: 16,
+//                         color: Colors.black54,
+//                       ),
+//                     )),
+//                 const SizedBox(height: 4),
+//                 Text('...',
+//                     style: GoogleFonts.openSans(
+//                       textStyle: const TextStyle(
+//                         fontSize: 14,
+//                         fontWeight: FontWeight.bold,
+//                       ),
+//                     )),
+//               ],
+//             ),
+//             Column(
+//               children: [
+//                 Text('Wind',
+//                     style: GoogleFonts.openSans(
+//                       textStyle: const TextStyle(
+//                         fontSize: 16,
+//                         color: Colors.black54,
+//                       ),
+//                     )),
+//                 const SizedBox(height: 4),
+//                 Text('...',
+//                     style: GoogleFonts.openSans(
+//                       textStyle: const TextStyle(
+//                         fontSize: 14,
+//                         fontWeight: FontWeight.bold,
+//                       ),
+//                     )),
+//               ],
+//             ),
+//           ],
+//         ),
+//       ],
+//     );
+//   }
+// }
+
+import 'dart:convert';
+
+import 'package:dtreatyflutter/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:redacted/redacted.dart';
+// Update with your actual import path
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
+
   @override
   _WeatherScreenState createState() => _WeatherScreenState();
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
-  late Future<WeatherData> weatherData;
-
-  @override
-  void initState() {
-    super.initState();
-    weatherData = WeatherService().fetchWeatherData(35.92, 74.30);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: FutureBuilder<WeatherData>(
-        future: weatherData,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            // Use the redacted package to show a loading state
-            return _buildLoadingState().redacted(
-              context: context,
-              redact: true,
-              configuration: RedactedConfiguration(
-                animationDuration: const Duration(milliseconds: 800),
+      child: globalWeatherData == null
+          ? const CircularProgressIndicator()
+          : _buildWeatherInfo(globalWeatherData!),
+    );
+  }
+
+  Widget _buildWeatherInfo(WeatherData weather) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(
+                Icons.location_on,
+                color: Colors.black54,
               ),
-            );
-          } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          } else if (snapshot.hasData) {
-            final weather = snapshot.data!;
-            return Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
+              const SizedBox(width: 8),
+              Text("Gilgit, Pakistan",
+                  style: GoogleFonts.openSans(
+                    textStyle: const TextStyle(
+                      fontSize: 16,
+                      color: Colors.black54,
+                    ),
+                  )),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('+${weather.temperature.toStringAsFixed(0)}°',
+                  style: GoogleFonts.openSans(
+                    textStyle: const TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )),
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.location_on,
-                        color: Colors.black54,
-                      ),
-                      const SizedBox(width: 8),
-                      Text("Gilgit, Pakistan",
-                          style: GoogleFonts.openSans(
-                            textStyle: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.black54,
-                            ),
-                          )),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('+${weather.temperature.toStringAsFixed(0)}°',
-                          style: GoogleFonts.openSans(
-                            textStyle: const TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('H: ${weather.highestTemp.toStringAsFixed(1)}°',
-                              style: GoogleFonts.openSans(
-                                textStyle: const TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.black54,
-                                ),
-                              )),
-                          Text('L: ${weather.lowestTemp.toStringAsFixed(1)}°',
-                              style: GoogleFonts.openSans(
-                                textStyle: const TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.black54,
-                                ),
-                              )),
-                        ],
-                      ),
-                      const SizedBox(
-                        width: 30.0,
-                      ),
-                      Image.network(
-                        'https://cdn-icons-png.flaticon.com/512/1163/1163661.png',
-                        width: 80,
-                        height: 80,
-                        fit: BoxFit.cover,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Column(
-                        children: [
-                          Text('Humidity',
-                              style: GoogleFonts.openSans(
-                                textStyle: const TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.black54,
-                                ),
-                              )),
-                          const SizedBox(height: 4),
-                          Text('${weather.humidity}%',
-                              style: GoogleFonts.openSans(
-                                textStyle: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              )),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text('Precipitation',
-                              style: GoogleFonts.openSans(
-                                textStyle: const TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.black54,
-                                ),
-                              )),
-                          const SizedBox(height: 4),
-                          Text('${weather.precipitation} mm',
-                              style: GoogleFonts.openSans(
-                                textStyle: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              )),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text('Pressure',
-                              style: GoogleFonts.openSans(
-                                textStyle: const TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.black54,
-                                ),
-                              )),
-                          const SizedBox(height: 4),
-                          Text('${weather.pressure} hPa',
-                              style: GoogleFonts.openSans(
-                                textStyle: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              )),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text('Wind',
-                              style: GoogleFonts.openSans(
-                                textStyle: const TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.black54,
-                                ),
-                              )),
-                          const SizedBox(height: 4),
-                          Text('${weather.windSpeed} m/s',
-                              style: GoogleFonts.openSans(
-                                textStyle: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              )),
-                        ],
-                      ),
-                    ],
-                  ),
+                  Text('H: ${weather.highestTemp.toStringAsFixed(1)}°',
+                      style: GoogleFonts.openSans(
+                        textStyle: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.black54,
+                        ),
+                      )),
+                  Text('L: ${weather.lowestTemp.toStringAsFixed(1)}°',
+                      style: GoogleFonts.openSans(
+                        textStyle: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.black54,
+                        ),
+                      )),
                 ],
               ),
-            );
-          } else {
-            return const Text('No data');
-          }
-        },
+              const SizedBox(
+                width: 30.0,
+              ),
+              Image.network(
+                'https://cdn-icons-png.flaticon.com/512/1163/1163661.png',
+                width: 80,
+                height: 80,
+                fit: BoxFit.cover,
+              ),
+            ],
+          ),
+          const SizedBox(height: 30),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildWeatherInfoColumn('Humidity', '${weather.humidity}%'),
+              _buildWeatherInfoColumn(
+                  'Precipitation', '${weather.precipitation} mm'),
+              _buildWeatherInfoColumn('Pressure', '${weather.pressure} hPa'),
+              _buildWeatherInfoColumn('Wind', '${weather.windSpeed} m/s'),
+            ],
+          ),
+        ],
       ),
     );
   }
 
-  Widget _buildLoadingState() {
+  Widget _buildWeatherInfoColumn(String label, String value) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            const Icon(
-              Icons.location_on,
-              color: Colors.black54,
-            ),
-            const SizedBox(width: 8),
-            Text("Loading location...",
-                style: GoogleFonts.openSans(
-                  textStyle: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.black54,
-                  ),
-                )),
-          ],
-        ),
-        const SizedBox(height: 16),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('...',
-                style: GoogleFonts.openSans(
-                  textStyle: const TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('H: ...',
-                    style: GoogleFonts.openSans(
-                      textStyle: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.black54,
-                      ),
-                    )),
-                Text('L: ...',
-                    style: GoogleFonts.openSans(
-                      textStyle: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.black54,
-                      ),
-                    )),
-              ],
-            ),
-            const SizedBox(
-              width: 30.0,
-            ),
-            Container(
-              width: 80,
-              height: 80,
-              color: Colors.grey.shade300,
-            ),
-          ],
-        ),
-        const SizedBox(height: 30),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Column(
-              children: [
-                Text('Humidity',
-                    style: GoogleFonts.openSans(
-                      textStyle: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black54,
-                      ),
-                    )),
-                const SizedBox(height: 4),
-                Text('...',
-                    style: GoogleFonts.openSans(
-                      textStyle: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )),
-              ],
-            ),
-            Column(
-              children: [
-                Text('Precipitation',
-                    style: GoogleFonts.openSans(
-                      textStyle: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black54,
-                      ),
-                    )),
-                const SizedBox(height: 4),
-                Text('...',
-                    style: GoogleFonts.openSans(
-                      textStyle: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )),
-              ],
-            ),
-            Column(
-              children: [
-                Text('Pressure',
-                    style: GoogleFonts.openSans(
-                      textStyle: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black54,
-                      ),
-                    )),
-                const SizedBox(height: 4),
-                Text('...',
-                    style: GoogleFonts.openSans(
-                      textStyle: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )),
-              ],
-            ),
-            Column(
-              children: [
-                Text('Wind',
-                    style: GoogleFonts.openSans(
-                      textStyle: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black54,
-                      ),
-                    )),
-                const SizedBox(height: 4),
-                Text('...',
-                    style: GoogleFonts.openSans(
-                      textStyle: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )),
-              ],
-            ),
-          ],
-        ),
+        Text(label,
+            style: GoogleFonts.openSans(
+              textStyle: const TextStyle(
+                fontSize: 16,
+                color: Colors.black54,
+              ),
+            )),
+        const SizedBox(height: 4),
+        Text(value,
+            style: GoogleFonts.openSans(
+              textStyle: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+            )),
       ],
     );
   }

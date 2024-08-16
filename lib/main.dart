@@ -1,17 +1,26 @@
+import 'package:dtreatyflutter/components/weather.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'pages/splash_screen.dart';
 import 'pages/home_screen.dart';
 import 'pages/camera_screen.dart';
 import 'pages/common_disease_details.dart';
 
-void main() {
+WeatherData? globalWeatherData; // Global variable to store fetched weather data
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  // Fetch weather data once during app initialization
+  globalWeatherData = await WeatherService().fetchWeatherData(35.92, 74.30);
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +30,6 @@ class MyApp extends StatelessWidget {
         '/': (context) => const SplashScreen(),
         '/home': (context) => WillPopScope(
               onWillPop: () async {
-                // Implement logic to handle back button press on home screen
                 return await showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
@@ -30,20 +38,18 @@ class MyApp extends StatelessWidget {
                         const Text('Are you sure you want to exit DTreaty?'),
                     actions: [
                       TextButton(
-                        onPressed: () => Navigator.pop(
-                            context, false), // Stay on home screen
+                        onPressed: () => Navigator.pop(context, false),
                         child: const Text('No'),
                       ),
                       TextButton(
-                        onPressed: () =>
-                            Navigator.pop(context, true), // Exit app
+                        onPressed: () => Navigator.pop(context, true),
                         child: const Text('Yes'),
                       ),
                     ],
                   ),
                 );
               },
-              child: const HomeScreen(), // Wrap HomeScreen with WillPopScope
+              child: const HomeScreen(),
             ),
         '/camera': (context) => CameraScreen(),
         DetailScreen.routeName: (context) => DetailScreen(),
