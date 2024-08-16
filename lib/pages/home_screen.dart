@@ -1,3 +1,5 @@
+import 'package:dtreatyflutter/auth/login_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../components/weather.dart';
 import '../components/common_disease.dart';
@@ -35,6 +37,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 buttonText: "START TREATMENT",
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/camera');
+                },
+              ),
+              NaviagtionButton(
+                buttonText: "Log Out",
+                onPressed: () async {
+                  await FirebaseAuth.instance.signOut();
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()),
+                  );
                 },
               ),
             ],

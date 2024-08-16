@@ -1,3 +1,5 @@
+import 'package:dtreatyflutter/auth/login_screen.dart';
+import 'package:dtreatyflutter/components/naviagtion_button.dart';
 import 'package:dtreatyflutter/pages/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -45,27 +47,68 @@ class _SignUpScreenState extends State<SignUpScreen> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   TextField(
                     controller: _emailController,
-                    decoration: const InputDecoration(labelText: 'Email'),
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      prefixIcon: const Icon(Icons.email),
+                      border: const OutlineInputBorder().copyWith(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide:
+                            const BorderSide(width: 1, color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
                   ),
                   TextField(
                     controller: _passwordController,
-                    decoration: const InputDecoration(labelText: 'Password'),
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      prefixIcon: const Icon(Icons.password),
+                      border: const OutlineInputBorder().copyWith(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide:
+                            const BorderSide(width: 1, color: Colors.black),
+                      ),
+                    ),
                     obscureText: true,
                   ),
                   const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: _signUpWithEmailPassword,
-                    child: const Text('Sign Up with Email & Password'),
+                  NaviagtionButton(
+                    buttonText: "Sign Up",
+                    onPressed: () {
+                      _signUpWithEmailPassword();
+                    },
                   ),
                   const SizedBox(height: 20),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text('Already have an account? Sign In'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Already have an account?'),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginScreen()),
+                            );
+                          },
+                          child: const Text('Sign In')),
+                    ],
                   ),
                 ],
               ),

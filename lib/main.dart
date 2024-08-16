@@ -13,7 +13,7 @@ void main() async {
   await Firebase.initializeApp();
 
   // Fetch weather data once during app initialization
-  globalWeatherData = await WeatherService().fetchWeatherData(35.92, 74.30);
+  // globalWeatherData = await WeatherService().fetchWeatherData(35.92, 74.30);
 
   runApp(const MyApp());
 }
