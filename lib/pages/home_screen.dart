@@ -1,4 +1,5 @@
 import 'package:dtreatyflutter/auth/login_screen.dart';
+import 'package:dtreatyflutter/pages/read_local_data.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../components/weather.dart';
@@ -49,6 +50,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
               ),
+              // NaviagtionButton(
+              //   buttonText: "See Local Data",
+              //   onPressed: () async {
+              //     await FirebaseAuth.instance.signOut();
+              //     Navigator.of(context).pushReplacement(
+              //       MaterialPageRoute(
+              //           builder: (context) => PredictionsScreen()),
+              //     );
+              //   },
+              // ),
             ],
           ),
         ),
