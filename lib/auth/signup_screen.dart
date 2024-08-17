@@ -91,6 +91,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 20),
                   NaviagtionButton(
                     buttonText: "Sign Up",
+                    icon: Icons.arrow_outward_outlined,
+                    left: 25.0,
                     onPressed: () {
                       _signUpWithEmailPassword();
                     },

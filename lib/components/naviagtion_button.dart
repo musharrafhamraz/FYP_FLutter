@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 
 class NaviagtionButton extends StatelessWidget {
   final String buttonText;
+  final IconData icon;
   final VoidCallback onPressed;
+  final double left;
 
   const NaviagtionButton({
     super.key,
     required this.buttonText,
     required this.onPressed,
+    required this.icon,
+    required this.left,
   });
 
   @override
@@ -22,9 +26,9 @@ class NaviagtionButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(60),
             ),
-            padding: const EdgeInsets.only(
+            padding: EdgeInsets.only(
               top: 5.0,
-              left: 25.0,
+              left: left,
               right: 5.0,
               bottom: 5.0,
             ),
@@ -44,8 +48,8 @@ class NaviagtionButton extends StatelessWidget {
                     border: Border.all(width: 2.0, color: Colors.black),
                     borderRadius: BorderRadius.circular(40.0),
                     color: Colors.black),
-                child: const Icon(
-                  Icons.arrow_outward_outlined,
+                child: Icon(
+                  icon,
                   size: 35.0,
                   color: Colors.white,
                 ),

@@ -133,6 +133,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 20),
                   NaviagtionButton(
                     buttonText: "Sign In",
+                    icon: Icons.arrow_outward_outlined,
+                    left: 25.0,
                     onPressed: () {
                       _signInWithEmailPassword();
                     },

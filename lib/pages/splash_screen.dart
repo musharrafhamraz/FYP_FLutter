@@ -86,6 +86,8 @@ class _SplashScreenState extends State<SplashScreen> {
                   const SizedBox(height: 50),
                   NaviagtionButton(
                     buttonText: "TRY FOR FREE",
+                    icon: Icons.arrow_outward_outlined,
+                    left: 25.0,
                     onPressed: () {
                       _checkUser();
                     },

@@ -1,4 +1,3 @@
-import 'package:dtreatyflutter/components/weather.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'pages/splash_screen.dart';
@@ -6,14 +5,11 @@ import 'pages/home_screen.dart';
 import 'pages/camera_screen.dart';
 import 'pages/common_disease_details.dart';
 
-WeatherData? globalWeatherData; // Global variable to store fetched weather data
+// Global variable to store fetched weather data
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
-  // Fetch weather data once during app initialization
-  // globalWeatherData = await WeatherService().fetchWeatherData(35.92, 74.30);
 
   runApp(const MyApp());
 }

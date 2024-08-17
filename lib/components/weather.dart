@@ -339,14 +339,9 @@
 //     );
 //   }
 // }
-
-import 'dart:convert';
-
-import 'package:dtreatyflutter/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart' as http;
-// Update with your actual import path
+import 'package:dtreatyflutter/weather_services/weather_services.dart'; // Update with the correct path
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
@@ -356,6 +351,26 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
+  WeatherData? globalWeatherData;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchWeatherData();
+  }
+
+  Future<void> _fetchWeatherData() async {
+    try {
+      final data = await WeatherService().fetchWeatherData(35.92, 74.30);
+      setState(() {
+        globalWeatherData = data;
+      });
+    } catch (e) {
+      // Handle error (you might want to show an error message to the user)
+      print('Error fetching weather data: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -464,56 +479,5 @@ class _WeatherScreenState extends State<WeatherScreen> {
             )),
       ],
     );
-  }
-}
-
-class WeatherData {
-  final double temperature;
-  final double lowestTemp;
-  final double highestTemp;
-  final int humidity;
-  final double precipitation;
-  final int pressure;
-  final double windSpeed;
-
-  WeatherData({
-    required this.temperature,
-    required this.lowestTemp,
-    required this.highestTemp,
-    required this.humidity,
-    required this.precipitation,
-    required this.pressure,
-    required this.windSpeed,
-  });
-
-  factory WeatherData.fromJson(Map<String, dynamic> json) {
-    return WeatherData(
-      temperature: json['current']['temp'],
-      lowestTemp: json['daily'][0]['temp']['min'],
-      highestTemp: json['daily'][0]['temp']['max'],
-      humidity: json['current']['humidity'],
-      precipitation: json['daily'][0]['rain'] ??
-          0.0, // Use 0.0 if rain data is not available
-      pressure: json['current']['pressure'],
-      windSpeed: json['current']['wind_speed'],
-    );
-  }
-}
-
-class WeatherService {
-  final String apiKey = '432a8658a6991c2c948f1125de99c13d';
-  final String baseUrl = 'https://api.openweathermap.org/data/3.0/onecall';
-
-  Future<WeatherData> fetchWeatherData(double lat, double lon) async {
-    final response = await http.get(
-      Uri.parse('$baseUrl?lat=$lat&lon=$lon&units=metric&appid=$apiKey'),
-    );
-
-    if (response.statusCode == 200) {
-      final json = jsonDecode(response.body);
-      return WeatherData.fromJson(json);
-    } else {
-      throw Exception('Failed to load weather data');
-    }
   }
 }
