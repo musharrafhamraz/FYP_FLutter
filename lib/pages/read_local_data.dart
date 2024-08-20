@@ -5,7 +5,9 @@ class PredictionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Predictions')),
+      appBar: AppBar(
+        title: Text('Local Database.'),
+      ),
       body: Column(
         children: [
           Expanded(
