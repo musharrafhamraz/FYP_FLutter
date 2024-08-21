@@ -1,4 +1,5 @@
 import 'package:dtreatyflutter/auth/login_screen.dart';
+import 'package:dtreatyflutter/network/network_utils.dart';
 import 'package:dtreatyflutter/pages/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +13,15 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  void _checkUser() {
+  void _checkUser() async {
     User? user = FirebaseAuth.instance.currentUser;
+    bool isConnected = await NetworkUtils.isConnected();
+
     if (user != null) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
+      );
+    } else if (!isConnected) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const HomeScreen()),
       );
