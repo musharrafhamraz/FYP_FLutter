@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
                 return await showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                    title: const Text('The Chef'),
+                    title: const Text('Dtreaty'),
                     content:
                         const Text('Are you sure you want to exit DTreaty?'),
                     actions: [

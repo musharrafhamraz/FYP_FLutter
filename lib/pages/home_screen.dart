@@ -1,7 +1,6 @@
 import 'package:dtreatyflutter/auth/login_screen.dart';
-import 'package:dtreatyflutter/data_storage/local_data_sync.dart';
-
-import 'package:dtreatyflutter/pages/read_local_data.dart';
+// import 'package:dtreatyflutter/data_storage/local_data_sync.dart';
+// import 'package:dtreatyflutter/pages/read_local_data.dart';
 // import 'package:dtreatyflutter/pages/read_local_data.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
           child: Column(
             children: [
-              const WeatherScreen(),
+              SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.27,
+                  child: const WeatherScreen()),
               const SizedBox(
                 height: 30.0,
               ),
@@ -37,6 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const AgricultureFacts(),
               // const Spacer(),
+              const SizedBox(
+                height: 10.0,
+              ),
               Row(
                 children: [
                   Expanded(
@@ -94,29 +98,29 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
 
-              NaviagtionButton(
-                icon: Icons.arrow_outward_outlined,
-                left: 25.0,
-                buttonText: "SYNC DATA",
-                onPressed: () {
-                  // Create an instance of LocalDataSync
-                  LocalDataSync localDataSync = LocalDataSync();
+              // NaviagtionButton(
+              //   icon: Icons.arrow_outward_outlined,
+              //   left: 25.0,
+              //   buttonText: "SYNC DATA",
+              //   onPressed: () {
+              //     // Create an instance of LocalDataSync
+              //     LocalDataSync localDataSync = LocalDataSync();
 
-                  // Call the syncDataToFirebase method on the instance
-                  localDataSync.syncDataToFirebase();
-                },
-              ),
-              NaviagtionButton(
-                icon: Icons.arrow_outward_outlined,
-                left: 25.0,
-                buttonText: "Read Data",
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                        builder: (context) => PredictionsScreen()),
-                  );
-                },
-              ),
+              //     // Call the syncDataToFirebase method on the instance
+              //     localDataSync.syncDataToFirebase();
+              //   },
+              // ),
+              // NaviagtionButton(
+              //   icon: Icons.arrow_outward_outlined,
+              //   left: 25.0,
+              //   buttonText: "Read Data",
+              //   onPressed: () {
+              //     Navigator.of(context).pushReplacement(
+              //       MaterialPageRoute(
+              //           builder: (context) => PredictionsScreen()),
+              //     );
+              //   },
+              // ),
 
               // NaviagtionButton(
               //   buttonText: "See Local Data",

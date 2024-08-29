@@ -15,7 +15,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final _obscureText = true;
+  var _obscureText = true;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isLoading = false;
@@ -118,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
-                            _obscureText != _obscureText; // Toggle obscureText
+                            _obscureText = !_obscureText; // Toggle obscureText
                           });
                         },
                         icon: Icon(
