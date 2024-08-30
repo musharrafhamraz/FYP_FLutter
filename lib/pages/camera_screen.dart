@@ -1,3 +1,4 @@
+import 'package:dtreatyflutter/pages/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:tflite_v2/tflite_v2.dart';
@@ -145,7 +146,10 @@ class _CameraScreenState extends State<CameraScreen> {
                 top: 13,
                 left: 13,
                 child: InkWell(
-                  onTap: () => Navigator.pushNamed(context, '/home'),
+                  onTap: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen())),
                   child: Container(
                     height: 65.0,
                     width: 65.0,

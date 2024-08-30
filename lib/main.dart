@@ -5,8 +5,6 @@ import 'pages/home_screen.dart';
 import 'pages/camera_screen.dart';
 import 'pages/common_disease_details.dart';
 
-// Global variable to store fetched weather data
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
