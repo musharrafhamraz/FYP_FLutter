@@ -43,6 +43,8 @@ dependencies:
   fl_location: ^4.0.0
   cloud_firestore: ^5.2.1
   shared_preferences: ^2.3.2
+  image: ^4.2.0
+  image_picker: ^1.1.2
 
   
 
@@ -79,6 +81,7 @@ flutter:
   assets:
     - assets/images/
     - assets/models/
+    - assets/model/
     - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see

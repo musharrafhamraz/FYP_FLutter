@@ -1,4 +1,5 @@
 import 'package:dtreatyflutter/auth/login_screen.dart';
+import 'package:dtreatyflutter/inference_page.dart';
 import 'package:dtreatyflutter/network/network_utils.dart';
 import 'package:dtreatyflutter/pages/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,6 +22,11 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const HomeScreen()),
       );
+
+      // test code
+      // Navigator.of(context).pushReplacement(
+      //   MaterialPageRoute(builder: (context) => PlantDiseaseIdentifier()),
+      // );
     } else if (!isConnected) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const HomeScreen()),
