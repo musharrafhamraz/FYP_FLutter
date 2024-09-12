@@ -1,5 +1,5 @@
 import 'package:dtreatyflutter/auth/login_screen.dart';
-import 'package:dtreatyflutter/inference_page.dart';
+// import 'package:dtreatyflutter/inference_page.dart';
 import 'package:dtreatyflutter/network/network_utils.dart';
 import 'package:dtreatyflutter/pages/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';

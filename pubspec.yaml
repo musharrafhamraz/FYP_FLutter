@@ -82,6 +82,7 @@ flutter:
     - assets/images/
     - assets/models/
     - assets/model/
+    - assets/latest_model/
     - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see

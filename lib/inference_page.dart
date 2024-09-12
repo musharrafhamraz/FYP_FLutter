@@ -24,7 +24,7 @@ class _PlantDiseaseIdentifierState extends State<PlantDiseaseIdentifier> {
 
   Future<void> _loadModel() async {
     String? res = await Tflite.loadModel(
-      model: "assets/model/latest_model.tflite",
+      model: "assets/latest_model/model.tflite",
       labels: "assets/model/labelss.txt",
       numThreads: 1,
       isAsset: true,
