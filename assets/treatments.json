@@ -74,5 +74,120 @@
       "disease_name": "Grape Healthy",
       "symptoms": "The leaf is fresh and green.",
       "treatment": "No need of treatment, Keep it up."
-    }
+    },
+    {
+      "disease_name": "Cherry Powdery Mildew",
+      "symptoms": "A white, powdery substance appears on the upper surface of leaves, especially young leaves. The leaves may curl, distort, and eventually drop. New shoots can be stunted, and if the infection is severe, it can affect fruit production by reducing the fruit size or causing fruits to fall prematurely.",
+      "treatment": "Prune trees to increase airflow and reduce humidity around the leaves. Apply fungicides before symptoms appear during the growing season. Remove and destroy affected leaves and shoots to prevent the spread of the disease. Use resistant varieties where available."
+  },
+  {
+      "disease_name": "Black Rot",
+      "symptoms": "Small, round, brown spots appear on the leaves, which eventually enlarge and turn black, causing the leaf to die. Infected fruits develop sunken black lesions and shrivel up into mummified, raisin-like structures. Shoots can also be infected, turning brown or black.",
+      "treatment": "Prune infected shoots and remove mummified fruits from the vine. Apply fungicides starting in early spring when the buds begin to swell. Use resistant grape varieties when possible. Practice crop rotation and ensure good air circulation by training vines properly."
+  },
+  {
+      "disease_name": "Corn (Maize) Healthy",
+      "symptoms": "No symptoms. The crop is healthy and shows no visible signs of disease or distress.",
+      "treatment": "Maintain regular field care practices such as proper irrigation, fertilization, and pest management to ensure the crop remains healthy."
+  },
+  {
+      "disease_name": "Grape Leaf Blight",
+      "symptoms": "Brown or tan lesions appear on the leaves, often starting at the edges and moving inward. The lesions may have a yellow or reddish margin, and severely affected leaves may drop prematurely. Over time, the disease weakens the plant, reducing the overall yield.",
+      "treatment": "Apply fungicides during early infection stages. Remove and destroy infected leaves to reduce the spread of the disease. Prune to improve air circulation and reduce leaf wetness. Consider using resistant grape varieties."
+  },
+  {
+      "disease_name": "Tomato Early Blight",
+      "symptoms": "Gray or brown spots on the leaves that get bigger in circles around a clear center, which looks like a target. The spots are surrounded by a bright yellow ring. The entire leaf may turn yellow and fall off as the disease gets worse. Same spots appear on stem and fruits, causing fruits to rot.",
+      "treatment": "Use disease-free seeds or resistant varieties. Plant in raised beds and avoid shady areas. Remove affected leaves and destroy them. Keep plants healthy with good fertilization and avoid overhead irrigation."
+  },
+  {
+      "disease_name": "Grape Esca (Black Measles)",
+      "symptoms": "Dark streaks or blotches appear on the leaves, followed by a slow decline in vine vigor. Affected leaves may show necrotic patches surrounded by yellow tissue. Fruits may develop sunken, dark lesions and shrivel. Wood may rot in advanced stages.",
+      "treatment": "Remove infected wood. Apply fungicides during humid conditions. Avoid wounding vines as the disease enters through cuts. Improve vineyard drainage and airflow."
+  },
+  {
+      "disease_name": "Bell Pepper Healthy",
+      "symptoms": "No symptoms. The plant is healthy and growing well without any visible signs of disease or stress.",
+      "treatment": "Continue providing proper care, including watering, fertilization, and pest control, to maintain plant health."
+  },
+  {
+      "disease_name": "Strawberry Healthy",
+      "symptoms": "No symptoms. The plant shows no signs of disease and is thriving.",
+      "treatment": "Maintain good cultural practices like adequate watering, sunlight, and protection from pests to ensure continued health."
+  },
+  {
+      "disease_name": "Peach Healthy",
+      "symptoms": "No symptoms. The plant is in good condition with no visible signs of disease or stress.",
+      "treatment": "Ensure the plant continues receiving proper care, such as regular watering, fertilization, and pest management."
+  },
+  {
+      "disease_name": "Cherry Healthy",
+      "symptoms": "No symptoms. The plant is healthy and shows no signs of disease or abnormal growth.",
+      "treatment": "Keep maintaining good practices like proper watering, fertilization, and monitoring for any potential pests."
+  },
+  {
+      "disease_name": "Corn (Maize) Cercospora Leaf Spot",
+      "symptoms": "Small, oval, tan spots with a reddish-brown border appear on the leaves, especially on the lower parts of the plant. As the disease progresses, spots coalesce, causing large areas of leaf tissue to die, resulting in premature leaf senescence.",
+      "treatment": "Use resistant varieties. Apply fungicides if necessary. Rotate crops and remove crop debris to prevent the disease from spreading in future seasons."
+  },
+  {
+      "disease_name": "Apple Scab",
+      "symptoms": "Olive-green to dark brown lesions develop on leaves and fruits. On leaves, the spots are often circular and can cause leaves to curl and drop. On fruits, the spots can become raised and scab-like, leading to malformed fruits.",
+      "treatment": "Use resistant apple varieties. Apply fungicides at the appropriate times in spring. Remove and destroy infected leaves and fruit to reduce the spread of the disease."
+  },
+  {
+      "disease_name": "Potato Early Blight",
+      "symptoms": "Dark, concentric spots appear on the older leaves, leading to a bullseye pattern. The affected leaves eventually turn yellow and die. The disease can also cause similar spots on stems and tubers.",
+      "treatment": "Use certified disease-free seed potatoes. Apply fungicides early in the growing season. Rotate crops and avoid planting potatoes in the same area year after year."
+  },
+  {
+      "disease_name": "Potato Healthy",
+      "symptoms": "No symptoms. The plant is healthy and free from disease.",
+      "treatment": "Continue good farming practices such as crop rotation, proper irrigation, and pest control."
+  },
+  {
+      "disease_name": "Apple Healthy",
+      "symptoms": "No symptoms. The tree is in good health with no signs of disease or pests.",
+      "treatment": "Maintain proper pruning, fertilization, and pest control to keep the tree healthy."
+  },
+  {
+      "disease_name": "Tomato Yellow Leaf Curl Virus",
+      "symptoms": "Yellowing of leaves, upward curling of leaves, and stunted growth. The leaves may become thickened and brittle. Fruit production is reduced, and the fruits may be small and deformed.",
+      "treatment": "Use resistant tomato varieties. Control whiteflies, which are the primary carriers of the virus, through insecticides or biological control. Remove and destroy infected plants."
+  },
+  {
+      "disease_name": "Tomato Late Blight",
+      "symptoms": "Brownish-green spots on leaf margins, which later turn brown. Wet weather can lead to a gray-white mold growth on the underside of leaves. Fruit can develop grayish-green to brown and wrinkled spots, and the plant may eventually wilt and die.",
+      "treatment": "Use resistant varieties and plant disease-free seeds. Provide proper drainage and ventilation. Avoid overhead irrigation and keep foliage dry. Rotate crops and apply fungicides when necessary."
+  },
+  {
+      "disease_name": "Strawberry Leaf Scorch",
+      "symptoms": "Dark purple or brown spots form on the leaves, which may eventually dry out, giving the leaves a scorched appearance. The plant's vigor is reduced, and fruit yield may decline.",
+      "treatment": "Remove infected leaves and apply fungicides if necessary. Ensure proper air circulation in the planting area and avoid overhead watering."
+  },
+  {
+      "disease_name": "Cedar Apple Rust",
+      "symptoms": "Orange or reddish-brown spots develop on apple leaves, leading to leaf drop. The spots may also appear on the fruits, causing them to deform. Orange, jelly-like galls can be seen on nearby cedar trees, which release spores that infect apple trees.",
+      "treatment": "Remove nearby cedar trees or apply fungicides during the early stages of apple tree growth. Use resistant apple varieties when possible."
+  },
+  {
+      "disease_name": "Corn (Maize) Common Rust",
+      "symptoms": "Small, reddish-brown pustules appear on the leaves, primarily on the upper leaf surface. As the disease progresses, the pustules can merge, leading to large areas of necrotic leaf tissue. Severe infections can reduce plant growth and yield.",
+      "treatment": "Plant resistant corn varieties. Apply fungicides if the disease is detected early. Practice crop rotation to prevent the rust from persisting in the field."
+  },
+  {
+      "disease_name": "Tomato Healthy",
+      "symptoms": "No symptoms. The plant is healthy and shows no signs of disease or abnormal growth.",
+      "treatment": "Maintain regular watering, fertilization, and pest control practices to keep the plant healthy."
+  },
+  {
+    "disease_name": "Peach Bacterial Spot",
+    "symptoms": "Dark, water-soaked spots appear on the leaves, fruit, and twigs. The spots enlarge and may become surrounded by a yellow halo. On fruit, the lesions may deepen, creating pits, which can lead to premature fruit drop. Severe infections can cause defoliation, leading to weakened trees and reduced fruit production.",
+    "treatment": "Plant resistant peach varieties when possible.\n Apply bactericides, such as copper sprays, during early stages of the disease.\n Prune trees to improve air circulation.\n Avoid overhead irrigation.\n Remove infected fruit and plant material to prevent the spread of the bacteria."
+  },
+  {
+    "disease_name": "Bell Pepper Bacterial Spot",
+    "symptoms": "Small water-soaked lesions appear on the leaves, stems, and fruits of the pepper plant. These lesions often turn brown and become necrotic, giving the leaves a shot-hole appearance. The lesions on the fruit are initially green but turn brown and scabby as the disease progresses. In severe cases, the lesions can lead to fruit cracking and drop. This disease thrives in wet, warm weather, and can spread rapidly under favorable conditions.",
+    "treatment": "Plant resistant varieties when available.\n Use disease-free seeds or transplants.\n Rotate crops to avoid planting in the same area for consecutive years.\n Avoid overhead irrigation to reduce leaf wetness.\n Apply copper-based bactericides during early stages of infection.\n Remove and destroy infected plants to prevent the spread of the disease."
+  }
   ]

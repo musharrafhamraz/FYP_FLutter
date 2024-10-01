@@ -7,11 +7,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
+
   @override
-  _CameraScreenState createState() => _CameraScreenState();
+  CameraScreenState createState() => CameraScreenState();
 }
 
-class _CameraScreenState extends State<CameraScreen> {
+class CameraScreenState extends State<CameraScreen> {
   CameraController? _controller;
   List<CameraDescription>? cameras;
   bool _isCameraInitialized = false;
@@ -37,7 +38,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
   Future<void> _loadModel() async {
     String? res = await Tflite.loadModel(
-      model: "assets/models/converted_model.tflite",
+      model: "assets/models/model_unquant.tflite",
       labels: "assets/models/labels.txt",
       numThreads: 1,
       isAsset: true,
@@ -52,18 +53,45 @@ class _CameraScreenState extends State<CameraScreen> {
       numResults: 5,
     );
     setState(() {
-      _prediction = recognitions?.isNotEmpty == true
-          ? recognitions!.first['label']
-          : 'No Prediction';
+      if (recognitions?.isNotEmpty == true) {
+        double confidence = recognitions!.first['confidence'];
+        if (confidence > 0.7) {
+          // Set an appropriate confidence threshold
+          _prediction = recognitions.first['label'];
+        } else {
+          _prediction = 'Not A Leaf';
+        }
+      } else {
+        _prediction = 'No Prediction';
+      }
     });
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ResultScreen(
-            prediction: _prediction ?? 'No Prediction',
-            imagePath: path,
-          ),
-        ));
+    if (_prediction == 'Not A Leaf' || _prediction == 'No Prediction') {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('Warning!'),
+              content: const Text('I only work with leaves.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('OK'),
+                )
+              ],
+            );
+          });
+    } else {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResultScreen(
+              prediction: _prediction ?? 'No Prediction',
+              imagePath: path,
+            ),
+          ));
+    }
   }
 
   Future<void> _captureAndClassify() async {
@@ -87,85 +115,60 @@ class _CameraScreenState extends State<CameraScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Text('Crop Doctor',
-                      style: GoogleFonts.openSans(
-                        textStyle: const TextStyle(
-                            fontSize: 27,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.lightGreen),
-                      )),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                if (_isCameraInitialized && _controller != null)
-                  Center(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(40.0),
-                      child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.73,
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        child: AspectRatio(
-                          aspectRatio: _controller!.value.aspectRatio,
-                          child: CameraPreview(_controller!),
-                        ),
-                      ),
-                    ),
-                  )
-                else
-                  const Center(child: CircularProgressIndicator()),
-                const SizedBox(
-                  height: 20,
-                ),
-                InkWell(
-                  onTap: _captureAndClassify,
-                  child: Container(
-                    height: 80.0,
-                    width: 80.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      color: Colors.black,
-                    ),
-                    child: const Icon(
-                      Icons.camera,
-                      color: Colors.white,
-                      size: 55.0,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Positioned(
-                top: 13,
-                left: 13,
-                child: InkWell(
-                  onTap: () => Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomeScreen())),
-                  child: Container(
-                    height: 65.0,
-                    width: 65.0,
-                    decoration: BoxDecoration(
-                      color: Colors.black54,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: const Icon(
-                      Icons.arrow_back_ios_new,
-                      color: Colors.white,
-                      size: 34,
-                    ),
-                  ),
-                )),
-          ],
+      appBar: AppBar(
+        title: Text(
+          'D t r e a t y',
+          style: GoogleFonts.openSans(
+              textStyle:
+                  const TextStyle(fontWeight: FontWeight.w700, fontSize: 25)),
         ),
+        centerTitle: true,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+            },
+            icon: const Icon(Icons.arrow_back_ios_new_sharp)),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (_isCameraInitialized && _controller != null)
+            Center(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(40.0),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.73,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  child: AspectRatio(
+                    aspectRatio: _controller!.value.aspectRatio,
+                    child: CameraPreview(_controller!),
+                  ),
+                ),
+              ),
+            )
+          else
+            const Center(child: CircularProgressIndicator()),
+          const SizedBox(
+            height: 20,
+          ),
+          InkWell(
+            onTap: _captureAndClassify,
+            child: Container(
+              height: 80.0,
+              width: 80.0,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+                color: Colors.black,
+              ),
+              child: const Icon(
+                Icons.camera,
+                color: Colors.white,
+                size: 55.0,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -6,10 +6,10 @@ class LoadingDialog extends StatefulWidget {
   const LoadingDialog({super.key, required this.onSave});
 
   @override
-  _LoadingDialogState createState() => _LoadingDialogState();
+  LoadingDialogState createState() => LoadingDialogState();
 }
 
-class _LoadingDialogState extends State<LoadingDialog> {
+class LoadingDialogState extends State<LoadingDialog> {
   bool _isSaving = true;
 
   @override
