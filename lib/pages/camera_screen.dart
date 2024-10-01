@@ -7,11 +7,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
+
   @override
-  _CameraScreenState createState() => _CameraScreenState();
+  CameraScreenState createState() => CameraScreenState();
 }
 
-class _CameraScreenState extends State<CameraScreen> {
+class CameraScreenState extends State<CameraScreen> {
   CameraController? _controller;
   List<CameraDescription>? cameras;
   bool _isCameraInitialized = false;
@@ -37,7 +38,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
   Future<void> _loadModel() async {
     String? res = await Tflite.loadModel(
-      model: "assets/latest_model/model.tflite",
+      model: "assets/models/model_unquant.tflite",
       labels: "assets/models/labels.txt",
       numThreads: 1,
       isAsset: true,
@@ -52,18 +53,45 @@ class _CameraScreenState extends State<CameraScreen> {
       numResults: 5,
     );
     setState(() {
-      _prediction = recognitions?.isNotEmpty == true
-          ? recognitions!.first['label']
-          : 'No Prediction';
+      if (recognitions?.isNotEmpty == true) {
+        double confidence = recognitions!.first['confidence'];
+        if (confidence > 0.7) {
+          // Set an appropriate confidence threshold
+          _prediction = recognitions.first['label'];
+        } else {
+          _prediction = 'Not A Leaf';
+        }
+      } else {
+        _prediction = 'No Prediction';
+      }
     });
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ResultScreen(
-            prediction: _prediction ?? 'No Prediction',
-            imagePath: path,
-          ),
-        ));
+    if (_prediction == 'Not A Leaf' || _prediction == 'No Prediction') {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('Warning!'),
+              content: const Text('I only work with leaves.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('OK'),
+                )
+              ],
+            );
+          });
+    } else {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResultScreen(
+              prediction: _prediction ?? 'No Prediction',
+              imagePath: path,
+            ),
+          ));
+    }
   }
 
   Future<void> _captureAndClassify() async {
@@ -89,7 +117,7 @@ class _CameraScreenState extends State<CameraScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Dtreaty',
+          'D t r e a t y',
           style: GoogleFonts.openSans(
               textStyle:
                   const TextStyle(fontWeight: FontWeight.w700, fontSize: 25)),

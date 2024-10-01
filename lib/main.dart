@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
               },
               child: const HomeScreen(),
             ),
-        '/camera': (context) => CameraScreen(),
+        '/camera': (context) => const CameraScreen(),
         DetailScreen.routeName: (context) => DetailScreen(),
       },
     );
