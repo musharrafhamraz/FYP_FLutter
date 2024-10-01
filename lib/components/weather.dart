@@ -31,6 +31,30 @@ class WeatherScreenState extends State<WeatherScreen> {
     }
   }
 
+  // Weather Animation
+  String getWeatherAnimation(String? mainCondition) {
+    if (mainCondition == null) return 'assets/animations/sunny_day.json';
+    switch (mainCondition.toLowerCase()) {
+      case 'clouds':
+      case 'mist':
+      case 'smoke':
+      case 'haze':
+      case 'dust':
+      case 'fog':
+        return 'assets/animations/cloudy_sun.json';
+      case 'rain':
+      case 'drizzle':
+      case 'shower rain':
+        return 'assets/animations/cloudy_sun.json';
+      case 'thunderstorm':
+        return 'assets/animations/sun_with_rain.json';
+      case 'clear':
+        return 'assets/animations/sunny_day.json';
+      default:
+        return 'assets/sunny_day.json';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -96,7 +120,7 @@ class WeatherScreenState extends State<WeatherScreen> {
                 width: 30.0,
               ),
               Lottie.asset(
-                'assets/animations/sunny_day.json',
+                getWeatherAnimation(weather.mainCondition),
                 width: 80,
                 height: 80,
                 fit: BoxFit.fill,

@@ -9,6 +9,7 @@ class WeatherData {
   final double precipitation;
   final int pressure;
   final double windSpeed;
+  final String mainCondition;
 
   WeatherData({
     required this.temperature,
@@ -18,10 +19,12 @@ class WeatherData {
     required this.precipitation,
     required this.pressure,
     required this.windSpeed,
+    required this.mainCondition,
   });
 
   factory WeatherData.fromJson(Map<String, dynamic> json) {
     return WeatherData(
+      mainCondition: json['current']['weather'][0]['main'],
       temperature: json['current']['temp'],
       lowestTemp: json['daily'][0]['temp']['min'],
       highestTemp: json['daily'][0]['temp']['max'],
