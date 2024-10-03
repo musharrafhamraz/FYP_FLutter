@@ -70,14 +70,36 @@ class CameraScreenState extends State<CameraScreen> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: const Text('Warning!'),
-              content: const Text('I only work with leaves.'),
+              title: Row(
+                children: [
+                  Icon(
+                    Icons.warning_rounded,
+                    color: Colors.amber[400],
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const Text(
+                    'Warning!',
+                    style: TextStyle(color: Colors.amber),
+                  ),
+                ],
+              ),
+              content: const Text(
+                'I only work with leaves.',
+                style: TextStyle(
+                    color: Color.fromRGBO(239, 181, 6, 1),
+                    fontWeight: FontWeight.w500),
+              ),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: const Text('OK'),
+                  child: const Text(
+                    'OK',
+                    style: TextStyle(color: Colors.amber),
+                  ),
                 )
               ],
             );

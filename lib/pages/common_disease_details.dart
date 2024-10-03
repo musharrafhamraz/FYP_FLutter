@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class DetailScreen extends StatelessWidget {
   static const routeName = '/detail';
 
+  const DetailScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final Map<String, dynamic> disease =
@@ -17,9 +19,12 @@ class DetailScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.5,
-              child: Image.asset(
-                disease['img'],
-                fit: BoxFit.cover,
+              child: Hero(
+                tag: disease['title'],
+                child: Image.asset(
+                  disease['img'],
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Positioned(

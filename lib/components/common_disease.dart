@@ -96,11 +96,14 @@ class CommonDisease extends StatelessWidget {
                       ),
                       child: AspectRatio(
                         aspectRatio: 1.5,
-                        child: Image.asset(
-                          disease['img']!,
-                          height: 150.0,
-                          width: 150.0,
-                          fit: BoxFit.cover,
+                        child: Hero(
+                          tag: disease['title']!,
+                          child: Image.asset(
+                            disease['img']!,
+                            height: 150.0,
+                            width: 150.0,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),

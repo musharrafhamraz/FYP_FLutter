@@ -41,11 +41,11 @@ class WeatherScreenState extends State<WeatherScreen> {
       case 'haze':
       case 'dust':
       case 'fog':
-        return 'assets/animations/cloudy_sun.json';
+        return 'assets/animations/clouds.json';
       case 'rain':
       case 'drizzle':
       case 'shower rain':
-        return 'assets/animations/cloudy_sun.json';
+        return 'assets/animations/rain.json';
       case 'thunderstorm':
         return 'assets/animations/sun_with_rain.json';
       case 'clear':
