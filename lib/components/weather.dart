@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:dtreatyflutter/weather_services/weather_services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:lottie/lottie.dart';
 
 class WeatherScreen extends StatefulWidget {
@@ -59,7 +60,12 @@ class WeatherScreenState extends State<WeatherScreen> {
   Widget build(BuildContext context) {
     return Center(
       child: globalWeatherData == null
-          ? const CircularProgressIndicator()
+          ? SpinKitWaveSpinner(
+              color: const Color(0xFF2A9D2E),
+              waveColor: Colors.green,
+              trackColor: Colors.green.shade200,
+              size: 70,
+            )
           : _buildWeatherInfo(globalWeatherData!),
     );
   }

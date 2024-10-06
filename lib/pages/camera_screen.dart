@@ -1,6 +1,7 @@
 import 'package:dtreatyflutter/pages/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tflite_v2/tflite_v2.dart';
 import 'treatment_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -170,7 +171,13 @@ class CameraScreenState extends State<CameraScreen> {
               ),
             )
           else
-            const Center(child: CircularProgressIndicator()),
+            Center(
+                child: SpinKitWaveSpinner(
+              color: const Color(0xFF2A9D2E),
+              waveColor: Colors.green,
+              trackColor: Colors.green.shade200,
+              size: 70,
+            )),
           const SizedBox(
             height: 20,
           ),

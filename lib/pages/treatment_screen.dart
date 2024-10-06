@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:dtreatyflutter/components/loading_dialog.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:dtreatyflutter/data_storage/data_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,6 +23,7 @@ class ResultScreen extends StatefulWidget {
 
 class ResultScreenState extends State<ResultScreen> {
   List<dynamic>? diseasesData;
+  // bool saving = false;
 
   @override
   void initState() {
@@ -206,15 +207,66 @@ class ResultScreenState extends State<ResultScreen> {
   }
 
   void _showFeedbackDialog(BuildContext context, String prediction) {
+    bool saving = false;
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return LoadingDialog(
-          onSave: () async {
-            await DataService.savePrediction(prediction);
+        return StatefulBuilder(
+          // Use StatefulBuilder to handle local state
+          builder: (BuildContext context, StateSetter setState) {
+            return AlertDialog(
+              title: saving
+                  ? const Text('Saving please wait..')
+                  : const Text('Confirmation'),
+              content: saving
+                  ? const SpinKitFadingCircle(
+                      color: Colors.amber,
+                      size: 30,
+                    )
+                  : const Text('Was this Prediction Helpful?'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Correct use of pop
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('NO'),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    setState(() {
+                      saving = true; // Update the local saving state
+                    });
+                    await DataService.savePrediction(prediction);
+                    setState(() {
+                      saving = false;
+                    });
+                    Navigator.of(context)
+                        .pop(); // Close the dialog after saving
+                    Navigator.of(context)
+                        .pop(); // Close the screen after saving
+                  },
+                  child: const Text('YES'),
+                ),
+              ],
+            );
           },
         );
       },
     );
   }
+
+  // void _showFeedbackDialog(BuildContext context, String prediction) {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return LoadingDialog(
+  //         onSave: () async {
+  //           await DataService.savePrediction(prediction);
+  //         },
+  //       );
+  //     },
+  //   );
+  // }
 }
