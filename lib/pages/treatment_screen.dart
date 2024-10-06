@@ -221,7 +221,7 @@ class ResultScreenState extends State<ResultScreen> {
                   : const Text('Confirmation'),
               content: saving
                   ? const SpinKitFadingCircle(
-                      color: Colors.amber,
+                      color: Colors.green,
                       size: 30,
                     )
                   : const Text('Was this Prediction Helpful?'),
